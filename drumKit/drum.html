@@ -7,18 +7,17 @@
 </head>
 <body>
 
-
   <div class="keys">
     <div data-key="65" class="key">
-      <kbd>A</kbd>
+      <kbd id="A">A</kbd>
       <span class="sound">clap</span>
     </div>
     <div data-key="83" class="key">
-      <kbd>S</kbd>
+      <kbd id="S">S</kbd>
       <span class="sound">hihat</span>
     </div>
     <div data-key="68" class="key">
-      <kbd>D</kbd>
+      <kbd id="D">D</kbd>
       <span class="sound">kick</span>
     </div>
     <div data-key="70" class="key">
@@ -57,7 +56,18 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
 <script>
+
+$("#A").on("click", function() {
+  console.log("clickA");
+  audio.currentTime = 0;
+  audio = "sounds/clap.wav">
+  audio.play();
+})
+
   function removeTransition(e) {
     if (e.propertyName !== 'transform') return;
     e.target.classList.remove('playing');
@@ -76,8 +86,6 @@
   const keys = Array.from(document.querySelectorAll('.key'));
   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
   window.addEventListener('keydown', playSound);
-</script>
-
 
 </body>
 </html>
